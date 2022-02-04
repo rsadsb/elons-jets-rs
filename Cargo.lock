@@ -20,7 +20,7 @@ checksum = "f26201604c87b1e01bd3d98f8d5d9a8fcbb815e8cedb41ffccbeb4bf593a35fe"
 [[package]]
 name = "adsb_deku"
 version = "0.5.0"
-source = "git+https://github.com/rsadsb/adsb_deku?branch=rename-apps-rsadsb_apps#788f6998977b03356ba5bfc45cd19f50b62caf00"
+source = "git+https://github.com/rsadsb/adsb_deku?branch=master#9797301c55f1c32c2800bf116c162fd89ef6ac8e"
 dependencies = [
  "deku",
 ]
@@ -627,7 +627,7 @@ checksum = "f497285884f3fcff424ffc933e56d7cbca511def0c9831a7f9b5f6153e3cc89b"
 [[package]]
 name = "rsadsb_apps"
 version = "0.5.0"
-source = "git+https://github.com/rsadsb/adsb_deku?branch=rename-apps-rsadsb_apps#788f6998977b03356ba5bfc45cd19f50b62caf00"
+source = "git+https://github.com/rsadsb/adsb_deku?branch=master#9797301c55f1c32c2800bf116c162fd89ef6ac8e"
 dependencies = [
  "adsb_deku",
  "anyhow",
