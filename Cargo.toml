@@ -1,0 +1,12 @@
+[package]
+name = "elons-jets-rs"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+adsb_deku = { git = "https://github.com/rsadsb/adsb_deku", branch = "master" }
+rsadsb_apps = { git = "https://github.com/rsadsb/adsb_deku", branch = "master" }
+hex = "0.4"
+clap = {version = "3.0.0", features = ["color", "derive", "wrap_help"]}
