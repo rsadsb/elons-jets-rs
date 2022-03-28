@@ -8,6 +8,6 @@ license = "MIT"
 
 [dependencies]
 adsb_deku = { git = "https://github.com/rsadsb/adsb_deku", branch = "master" }
-rsadsb_apps = { git = "https://github.com/rsadsb/adsb_deku", branch = "master" }
+rsadsb_common = { git = "https://github.com/rsadsb/adsb_deku", branch = "master" }
 hex = "0.4"
 clap = {version = "3.0.0", features = ["color", "derive", "wrap_help"]}

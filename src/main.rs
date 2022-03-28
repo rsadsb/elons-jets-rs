@@ -6,7 +6,7 @@ use std::time::Duration;
 use adsb_deku::deku::DekuContainerRead;
 use adsb_deku::{Frame, DF};
 use clap::Parser;
-use rsadsb_apps::Airplanes;
+use rsadsb_common::{AirplaneDetails, Airplanes};
 
 #[derive(Debug, Clone, Parser)]
 #[clap(
@@ -39,9 +39,9 @@ fn main() {
     let port = opts.port;
 
     let socket = SocketAddr::from((host, port));
-    let stream = TcpStream::connect_timeout(&socket, Duration::from_secs(5)).expect(
-        &format!(r#"could not open port to ADS-B client at {host}:{port}, try running https://github.com/rsadsb/dump1090_rs.
-see https://github.com/rsadsb/adsb_deku#serverdemodulationexternal-applications for more details"#).to_string()
+    let stream = TcpStream::connect_timeout(&socket, Duration::from_secs(5)).unwrap_or_else(|_|
+        panic!(r#"could not open port to ADS-B client at {host}:{port}, try running https://github.com/rsadsb/dump1090_rs.
+see https://github.com/rsadsb/adsb_deku#serverdemodulationexternal-applications for more details"#)
     );
     stream
         .set_read_timeout(Some(std::time::Duration::from_millis(50)))
@@ -90,9 +90,9 @@ see https://github.com/rsadsb/adsb_deku#serverdemodulationexternal-applications 
             }
         }
         // for every found jet, print position
-        for key in adsb_airplanes.0.keys() {
+        for key in adsb_airplanes.keys() {
             let value = adsb_airplanes.aircraft_details(*key);
-            if let Some((position, _, _)) = value {
+            if let Some(AirplaneDetails { position, .. }) = value {
                 println!(
                     "SEEN: [{key}] - {} {}",
                     position.latitude, position.longitude
